@@ -57,3 +57,7 @@ def test_bank_transaction(zero_bank_account, deposits, withdrawals, expected):
     zero_bank_account.deposit(deposits)
     zero_bank_account.withdraw(withdrawals)
     assert zero_bank_account.balance == expected
+
+def test_insufficient_funds(bank_account):
+    with pytest.raises(Exception):
+        bank_account.withdraw(200)
